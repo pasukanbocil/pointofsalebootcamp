@@ -1,0 +1,3 @@
+{{ $pageTitle }}
+<br>
+{{ $content }}
