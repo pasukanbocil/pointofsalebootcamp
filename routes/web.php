@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,3 +41,10 @@ Route::get('/product/create', [ProductController::class, 'create']);
 Route::post('/product', [ProductController::class, 'store']);
 Route::put('/product/{id}', [ProductController::class, 'update']);
 Route::delete('/product/{id}', [ProductController::class, 'destroy']);
+
+
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/create', [UserController::class, 'create']);
+Route::post('/user', [UserController::class, 'store']);
+Route::put('/user/{id}', [UserController::class, 'update']);
+Route::delete('/user/{id}', [UserController::class, 'destroy']);
