@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -52,3 +53,10 @@ Route::delete('/user/{id}', [UserController::class, 'destroy']);
 
 
 Route::get('/profile', [UserController::class, 'profile']);
+
+Route::get('/category', [CategoriesController::class, 'index']);
+Route::get('/category/create', [CategoriesController::class, 'create']);
+Route::post('/category', [CategoriesController::class, 'store']);
+Route::get('/category/{id}/edit', [CategoriesController::class, 'edit']);
+Route::put('/category/{id}', [CategoriesController::class, 'update']);
+Route::delete('/category/{id}', [CategoriesController::class, 'destroy']);

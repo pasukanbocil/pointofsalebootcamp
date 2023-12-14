@@ -10,21 +10,24 @@
 </head>
 
 <body>
-    <form action="/product" method="POST" enctype="multipart/form-data">
+    @if ($errors->any())
+        <div class="alert alert-danger col-lg-8">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="/category" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 col-lg-5">
-            <label for="products" class="form-label">Name Product</label>
-            <input type="text" name="products" class="form-control" id="products">
-        </div>
-        <div class="mb-3 col-lg-5">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" name="price" class="form-control" id="price">
-        </div>
-        <div class="mb-3 col-lg-5">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="number" name="stock" class="form-control" id="stock">
+            <label for="category_name" class="form-label">Category Name</label>
+            <input type="text" name="category_name" class="form-control" id="category_name" required>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <Button type="reset" class="btn btn-primary">Reset</Button>
+        <a href="/category" class="btn btn-primary">Back</a>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
