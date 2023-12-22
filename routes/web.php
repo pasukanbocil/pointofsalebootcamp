@@ -37,12 +37,18 @@ Route::get('/about', function () {
     return view('about', $data);
 });
 
-Route::get('/product', [ProductController::class, 'index']);
-Route::get('/product/create', [ProductController::class, 'create']);
-Route::post('/product', [ProductController::class, 'store']);
-Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
-Route::put('/product/{id}', [ProductController::class, 'update']);
-Route::delete('/product/{id}', [ProductController::class, 'destroy']);
+Route::get('/product', [ProductController::class, 'index'])
+    ->middleware('auth', 'admin');
+Route::get('/product/create', [ProductController::class, 'create'])
+    ->middleware('auth', 'admin');
+Route::post('/product', [ProductController::class, 'store'])
+    ->middleware('auth', 'admin');
+Route::get('/product/{id}/edit', [ProductController::class, 'edit'])
+    ->middleware('auth', 'admin');
+Route::put('/product/{id}', [ProductController::class, 'update'])
+    ->middleware('auth', 'admin');
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])
+    ->middleware('auth', 'admin');
 
 
 Route::get('/user', [UserController::class, 'index']);
@@ -54,9 +60,15 @@ Route::delete('/user/{id}', [UserController::class, 'destroy']);
 
 Route::get('/profile', [UserController::class, 'profile']);
 
-Route::get('/category', [CategoriesController::class, 'index']);
-Route::get('/category/create', [CategoriesController::class, 'create']);
-Route::post('/category', [CategoriesController::class, 'store']);
-Route::get('/category/{id}/edit', [CategoriesController::class, 'edit']);
-Route::put('/category/{id}', [CategoriesController::class, 'update']);
-Route::delete('/category/{id}', [CategoriesController::class, 'destroy']);
+Route::get('/category', [CategoriesController::class, 'index'])
+    ->middleware('auth', 'admin');
+Route::get('/category/create', [CategoriesController::class, 'create'])
+    ->middleware('auth', 'admin');
+Route::post('/category', [CategoriesController::class, 'store'])
+    ->middleware('auth', 'admin');
+Route::get('/category/{id}/edit', [CategoriesController::class, 'edit'])
+    ->middleware('auth', 'admin');
+Route::put('/category/{id}', [CategoriesController::class, 'update'])
+    ->middleware('auth', 'admin');
+Route::delete('/category/{id}', [CategoriesController::class, 'destroy'])
+    ->middleware('auth', 'admin');
